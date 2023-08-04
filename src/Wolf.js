@@ -5,6 +5,6 @@ export class Wolf extends Animal {
     super();
     this.strength = 9;
     this.initiative = 5;
-    this.image = './images/wolf.png';
+    this.cssClass = 'wolf';
   }
 }
