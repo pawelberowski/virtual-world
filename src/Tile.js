@@ -1,7 +1,8 @@
 export class Tile {
-  constructor(tileId) {
+  constructor() {
+    this.tileDiv = document.createElement('div');
+    this.tileDiv.classList.add('tile');
     this.organism = null;
-    this.tileDiv = document.getElementById(tileId);
   }
 
   setOrganism(organism) {
