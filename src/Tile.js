@@ -1,8 +1,10 @@
 export class Tile {
-  constructor() {
+  constructor(xCoordinate, yCoordinate) {
     this.tileDiv = document.createElement('div');
     this.tileDiv.classList.add('tile');
     this.organism = null;
+    this.xCoordinate = xCoordinate;
+    this.yCoordinate = yCoordinate;
   }
 
   setOrganism(organism) {
@@ -11,6 +13,7 @@ export class Tile {
   }
 
   removeOrganism() {
+    this.tileDiv.classList.remove(this.organism.cssClass);
     this.organism = null;
   }
 }
