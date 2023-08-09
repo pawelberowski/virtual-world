@@ -19,9 +19,36 @@ export class Board {
     }
   }
 
-  moveOrganism(xCoordinate, yCoordinate) {
+  moveOrganism(direction, xCoordinate, yCoordinate) {
     const tile = this.tileArray[xCoordinate][yCoordinate];
-    const newTile = this.tileArray[xCoordinate + 1][yCoordinate];
+    let newTile = null;
+    if (direction === 'e') {
+      newTile = this.tileArray[xCoordinate + 1][yCoordinate];
+    }
+    if (direction === 'se') {
+      newTile = this.tileArray[xCoordinate + 1][yCoordinate + 1];
+    }
+    if (direction === 's') {
+      newTile = this.tileArray[xCoordinate][yCoordinate + 1];
+    }
+    if (direction === 'sw') {
+      newTile = this.tileArray[xCoordinate - 1][yCoordinate + 1];
+    }
+    if (direction === 'w') {
+      newTile = this.tileArray[xCoordinate - 1][yCoordinate];
+    }
+    if (direction === 'nw') {
+      newTile = this.tileArray[xCoordinate - 1][yCoordinate - 1];
+    }
+    if (direction === 'n') {
+      newTile = this.tileArray[xCoordinate][yCoordinate - 1];
+    }
+    if (direction === 'ne') {
+      newTile = this.tileArray[xCoordinate + 1][yCoordinate - 1];
+    }
+    if (!newTile) {
+      return;
+    }
     newTile.setOrganism(tile.organism);
     tile.organism.tile = newTile;
     tile.removeOrganism();

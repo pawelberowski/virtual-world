@@ -7,7 +7,11 @@ export class Animal extends Organism {
     this.board = board;
   }
 
-  action() {
-    this.board.moveOrganism(this.tile.xCoordinate, this.tile.yCoordinate);
+  action(direction) {
+    this.board.moveOrganism(
+      direction,
+      this.tile.xCoordinate,
+      this.tile.yCoordinate,
+    );
   }
 }
