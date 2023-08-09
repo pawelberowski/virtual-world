@@ -23,6 +23,7 @@ export class Board {
     const tile = this.tileArray[xCoordinate][yCoordinate];
     const newTile = this.tileArray[xCoordinate + 1][yCoordinate];
     newTile.setOrganism(tile.organism);
+    tile.organism.tile = newTile;
     tile.removeOrganism();
   }
 }
