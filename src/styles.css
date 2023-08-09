@@ -36,3 +36,23 @@ body {
 .wolf {
   background-image: url('images/wolf.png');
 }
+
+.sheep {
+  background-image: url('images/sheep.png');
+}
+
+.fox {
+  background-image: url('images/fox.png');
+}
+
+.antelope {
+  background-image: url('images/antelope.png');
+}
+
+.turtle {
+  background-image: url('images/turtle.png');
+}
+
+.player {
+  background-image: url('images/player.png');
+}
