@@ -27,6 +27,19 @@ export class Board {
     this.orderedOrganisms.push(organism);
   }
 
+  playTurn = () => {
+    this.orderedOrganisms.sort(function (organismOne, organismTwo) {
+      return organismTwo.initiative - organismOne.initiative;
+    });
+    this.orderedOrganisms.forEach(function (organism) {
+      organism.action();
+    });
+  };
+
+  runGame() {
+    setInterval(this.playTurn, 1000);
+  }
+
   moveOrganism(direction, xCoordinate, yCoordinate) {
     const tile = this.tileArray[xCoordinate][yCoordinate];
     let newTile = null;
