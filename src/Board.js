@@ -5,6 +5,7 @@ export class Board {
     this.heigth = 20;
     this.width = 20;
     this.tileArray = [];
+    this.orderedOrganisms = [];
   }
 
   generateBoard() {
@@ -17,6 +18,13 @@ export class Board {
         board.append(tile.tileDiv);
       }
     }
+  }
+
+  addOrganism(xCoordinate, yCoordinate, organismConstructor) {
+    const tile = this.tileArray[xCoordinate][yCoordinate];
+    const organism = new organismConstructor(tile, this);
+    tile.setOrganism(organism);
+    this.orderedOrganisms.push(organism);
   }
 
   moveOrganism(direction, xCoordinate, yCoordinate) {
