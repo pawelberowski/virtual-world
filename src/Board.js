@@ -32,7 +32,7 @@ export class Board {
       return organismTwo.initiative - organismOne.initiative;
     });
     this.orderedOrganisms.forEach(function (organism) {
-      organism.action(organism.getRandomDirection());
+      organism.action();
     });
   };
 
