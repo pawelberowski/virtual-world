@@ -11,7 +11,7 @@ export class Animal extends Organism {
     const directionsArray = ['n', 'ne', 'e', 'se', 's', 'sw', 'w', 'nw'];
     return directionsArray[Math.floor(Math.random() * directionsArray.length)];
   }
-  // check for walls in action and pick another
+
   action() {
     this.board.moveOrganism(
       this.getRandomDirection(),

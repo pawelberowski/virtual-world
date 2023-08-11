@@ -44,31 +44,36 @@ export class Board {
     const tile = this.tileArray[xCoordinate][yCoordinate];
     let newTile = null;
     if (direction === 'e') {
-      newTile = this.tileArray[xCoordinate + 1][yCoordinate];
+      newTile = this.tileArray[xCoordinate + 1]?.[yCoordinate];
     }
     if (direction === 'se') {
-      newTile = this.tileArray[xCoordinate + 1][yCoordinate + 1];
+      newTile = this.tileArray[xCoordinate + 1]?.[yCoordinate + 1];
     }
     if (direction === 's') {
-      newTile = this.tileArray[xCoordinate][yCoordinate + 1];
+      newTile = this.tileArray[xCoordinate]?.[yCoordinate + 1];
     }
     if (direction === 'sw') {
-      newTile = this.tileArray[xCoordinate - 1][yCoordinate + 1];
+      newTile = this.tileArray[xCoordinate - 1]?.[yCoordinate + 1];
     }
     if (direction === 'w') {
-      newTile = this.tileArray[xCoordinate - 1][yCoordinate];
+      newTile = this.tileArray[xCoordinate - 1]?.[yCoordinate];
     }
     if (direction === 'nw') {
-      newTile = this.tileArray[xCoordinate - 1][yCoordinate - 1];
+      newTile = this.tileArray[xCoordinate - 1]?.[yCoordinate - 1];
     }
     if (direction === 'n') {
-      newTile = this.tileArray[xCoordinate][yCoordinate - 1];
+      newTile = this.tileArray[xCoordinate]?.[yCoordinate - 1];
     }
     if (direction === 'ne') {
-      newTile = this.tileArray[xCoordinate + 1][yCoordinate - 1];
+      newTile = this.tileArray[xCoordinate + 1]?.[yCoordinate - 1];
     }
     if (!newTile) {
-      return;
+      console.log('no new tile in that direction');
+      return this.moveOrganism(
+        tile.organism.getRandomDirection(),
+        xCoordinate,
+        yCoordinate,
+      );
     }
     newTile.setOrganism(tile.organism);
     tile.organism.tile = newTile;
