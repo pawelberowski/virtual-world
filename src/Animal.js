@@ -5,8 +5,28 @@ export class Animal extends Organism {
     super(tile, board);
   }
 
-  fight() {
-    console.log('Fight!');
+  fight(newTile) {
+    console.log(this, 'Attacked!', newTile.organism);
+    console.log(this.board.orderedOrganisms);
+    if (this.strength > newTile.organism.strength) {
+      this.board.orderedOrganisms.splice(
+        this.board.orderedOrganisms.indexOf(newTile.organism),
+        1,
+      );
+      newTile.removeOrganism();
+      console.log(this.board.orderedOrganisms);
+      this.board.moveOrganism(this.tile, newTile);
+      return;
+    }
+    if (this.strength < newTile.organism.strength) {
+      this.board.orderedOrganisms.splice(
+        this.board.orderedOrganisms.indexOf(this),
+        1,
+      );
+      this.tile.removeOrganism();
+      delete this;
+      console.log(this.board.orderedOrganisms);
+    }
   }
 
   mate() {
@@ -19,7 +39,8 @@ export class Animal extends Organism {
       if (newTile.organism.cssClass === this.cssClass) {
         this.mate();
       } else {
-        this.fight();
+        this.fight(newTile);
+        return;
       }
     }
     this.board.moveOrganism(this.tile, newTile);
