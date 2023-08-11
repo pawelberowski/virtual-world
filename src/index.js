@@ -11,9 +11,9 @@ const board = new Board();
 board.generateBoard();
 console.log(board.tileArray);
 
-board.addOrganism(19, 0, Wolf);
-// board.addOrganism(0, 19, Fox);
-// board.addOrganism(0, 12, Sheep);
+board.addOrganism(10, 10, Wolf);
+board.addOrganism(0, 19, Fox);
+board.addOrganism(0, 12, Sheep);
 // board.addOrganism(0, 10, Fox);
 // board.addOrganism(0, 8, Antelope);
 // board.addOrganism(0, 6, Turtle);

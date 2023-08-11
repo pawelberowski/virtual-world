@@ -32,7 +32,7 @@ export class Board {
       return organismTwo.initiative - organismOne.initiative;
     });
     this.orderedOrganisms.forEach(function (organism) {
-      organism.action();
+      organism.action(organism.getRandomDirection());
     });
   };
 
@@ -40,43 +40,9 @@ export class Board {
     setInterval(this.playTurn, 1000);
   }
 
-  moveOrganism(direction, xCoordinate, yCoordinate) {
-    const tile = this.tileArray[xCoordinate][yCoordinate];
-    let newTile = null;
-    if (direction === 'e') {
-      newTile = this.tileArray[xCoordinate + 1]?.[yCoordinate];
-    }
-    if (direction === 'se') {
-      newTile = this.tileArray[xCoordinate + 1]?.[yCoordinate + 1];
-    }
-    if (direction === 's') {
-      newTile = this.tileArray[xCoordinate]?.[yCoordinate + 1];
-    }
-    if (direction === 'sw') {
-      newTile = this.tileArray[xCoordinate - 1]?.[yCoordinate + 1];
-    }
-    if (direction === 'w') {
-      newTile = this.tileArray[xCoordinate - 1]?.[yCoordinate];
-    }
-    if (direction === 'nw') {
-      newTile = this.tileArray[xCoordinate - 1]?.[yCoordinate - 1];
-    }
-    if (direction === 'n') {
-      newTile = this.tileArray[xCoordinate]?.[yCoordinate - 1];
-    }
-    if (direction === 'ne') {
-      newTile = this.tileArray[xCoordinate + 1]?.[yCoordinate - 1];
-    }
-    if (!newTile) {
-      console.log('no new tile in that direction');
-      return this.moveOrganism(
-        tile.organism.getRandomDirection(),
-        xCoordinate,
-        yCoordinate,
-      );
-    }
-    newTile.setOrganism(tile.organism);
-    tile.organism.tile = newTile;
-    tile.removeOrganism();
+  moveOrganism(currentTile, newTile) {
+    newTile.setOrganism(currentTile.organism);
+    currentTile.organism.tile = newTile;
+    currentTile.removeOrganism();
   }
 }
