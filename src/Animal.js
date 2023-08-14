@@ -31,16 +31,36 @@ export class Animal extends Organism {
 
   mate() {
     console.log('Love is in the air');
+    const emptyTiles = this.board.getEmptyTilesAround(this.tile);
+    if (!emptyTiles.length) {
+      return;
+    }
+    const emptyTile = this.board.getRandomTile(emptyTiles);
+    this.board.addOrganism(
+      emptyTile.xCoordinate,
+      emptyTile.yCoordinate,
+      this.constructor,
+    );
+  }
+
+  findTileToMove() {
+    const newTile = this.board.probeForNewTile(
+      this.board.getRandomDirection(),
+      this.tile,
+    );
+    if (!newTile) {
+      return this.findTileToMove();
+    }
+    return newTile;
   }
 
   action() {
-    const newTile = this.probeForNewTile(this.getRandomDirection());
+    const newTile = this.findTileToMove();
     if (newTile.organism !== null) {
       if (newTile.organism.cssClass === this.cssClass) {
-        this.mate();
+        return this.mate();
       } else {
-        this.fight(newTile);
-        return;
+        return this.fight(newTile);
       }
     }
     this.board.moveOrganism(this.tile, newTile);

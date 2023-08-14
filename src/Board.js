@@ -20,6 +20,87 @@ export class Board {
     }
   }
 
+  getRandomDirection() {
+    const directionsArray = ['n', 'ne', 'e', 'se', 's', 'sw', 'w', 'nw'];
+    return directionsArray[Math.floor(Math.random() * directionsArray.length)];
+  }
+
+  getTileWithCoordinates(xCoordinate, yCoordinate) {
+    return this.tileArray[xCoordinate]?.[yCoordinate];
+  }
+
+  probeForNewTile(direction, tile) {
+    if (direction === 'e') {
+      return this.getTileWithCoordinates(
+        tile.xCoordinate + 1,
+        tile.yCoordinate,
+      );
+    }
+    if (direction === 'se') {
+      return this.getTileWithCoordinates(
+        tile.xCoordinate + 1,
+        tile.yCoordinate + 1,
+      );
+    }
+    if (direction === 's') {
+      return this.getTileWithCoordinates(
+        tile.xCoordinate,
+        tile.yCoordinate + 1,
+      );
+    }
+    if (direction === 'sw') {
+      return this.getTileWithCoordinates(
+        tile.xCoordinate - 1,
+        tile.yCoordinate + 1,
+      );
+    }
+    if (direction === 'w') {
+      return this.getTileWithCoordinates(
+        tile.xCoordinate - 1,
+        tile.yCoordinate,
+      );
+    }
+    if (direction === 'nw') {
+      return this.getTileWithCoordinates(
+        tile.xCoordinate - 1,
+        tile.yCoordinate - 1,
+      );
+    }
+    if (direction === 'n') {
+      return this.getTileWithCoordinates(
+        tile.xCoordinate,
+        tile.yCoordinate - 1,
+      );
+    }
+    if (direction === 'ne') {
+      return this.getTileWithCoordinates(
+        tile.xCoordinate + 1,
+        tile.yCoordinate - 1,
+      );
+    }
+  }
+
+  getTilesAround(tile) {
+    const directionsArray = ['n', 'ne', 'e', 'se', 's', 'sw', 'w', 'nw'];
+    return directionsArray.reduce((result, direction) => {
+      const newTile = this.probeForNewTile(direction, tile);
+      if (newTile) {
+        result.push(newTile);
+      }
+      return result;
+    }, []);
+  }
+
+  getEmptyTilesAround(tile) {
+    return this.getTilesAround(tile).filter((tile) => {
+      return tile.organism === null;
+    });
+  }
+
+  getRandomTile(tilesArray) {
+    return tilesArray[Math.floor(Math.random() * tilesArray.length)];
+  }
+
   addOrganism(xCoordinate, yCoordinate, organismConstructor) {
     const tile = this.tileArray[xCoordinate][yCoordinate];
     const organism = new organismConstructor(tile, this);
@@ -32,7 +113,7 @@ export class Board {
       return organismTwo.initiative - organismOne.initiative;
     });
     this.orderedOrganisms.forEach(function (organism) {
-      organism.action();
+      organism.action(); //accommodate for a promise from player
     });
   };
 
