@@ -1,3 +1,8 @@
 import { Plant } from './Plant';
 
-export class Guarana extends Plant {}
+export class Guarana extends Plant {
+  constructor(tile, board) {
+    super(tile, board);
+    this.cssClass = 'guarana';
+  }
+}

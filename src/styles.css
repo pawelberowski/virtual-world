@@ -56,3 +56,19 @@ body {
 .player {
   background-image: url('images/player.png');
 }
+
+.sow-thistle {
+  background-image: url('images/sow_thistle.png');
+}
+
+.grass {
+  background-image: url('images/grass.png');
+}
+
+.poison-berry {
+  background-image: url('images/poison_berries.png');
+}
+
+.guarana {
+  background-image: url('images/guarana.png');
+}
