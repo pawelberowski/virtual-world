@@ -55,14 +55,19 @@ export class Animal extends Organism {
   }
 
   action() {
-    const newTile = this.findTileToMove();
-    if (newTile.organism !== null) {
-      if (newTile.organism.cssClass === this.cssClass) {
-        return this.mate();
-      } else {
-        return this.fight(newTile);
+    return new Promise((resolve, reject) => {
+      const newTile = this.findTileToMove();
+      if (newTile.organism !== null) {
+        if (newTile.organism.cssClass === this.cssClass) {
+          this.mate();
+          resolve();
+        } else {
+          this.fight(newTile);
+          resolve();
+        }
       }
-    }
-    this.board.moveOrganism(this.tile, newTile);
+      this.board.moveOrganism(this.tile, newTile);
+      resolve();
+    })
   }
 }

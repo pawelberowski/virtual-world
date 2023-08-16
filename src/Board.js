@@ -108,17 +108,29 @@ export class Board {
     this.orderedOrganisms.push(organism);
   }
 
+  runActions = (currentIndex = 0) => {
+    if (currentIndex >= this.orderedOrganisms.length) {
+      return Promise.resolve(); // Base case: All actions completed
+    }
+
+    const organism = this.orderedOrganisms[currentIndex];
+
+    return organism.action().then(() => {
+      return this.runActions(currentIndex + 1); // Recursively move to the next action
+    });
+  }
+
   playTurn = () => {
     this.orderedOrganisms.sort(function (organismOne, organismTwo) {
       return organismTwo.initiative - organismOne.initiative;
     });
-    this.orderedOrganisms.forEach(function (organism) {
-      organism.action(); //accommodate for a promise from player
-    });
+    return this.runActions();
   };
 
   runGame() {
-    setInterval(this.playTurn, 1000);
+    this.playTurn().then(() => {
+      return this.runGame();
+    });
   }
 
   moveOrganism(currentTile, newTile) {
