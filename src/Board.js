@@ -118,7 +118,7 @@ export class Board {
     return organism.action().then(() => {
       return this.runActions(currentIndex + 1); // Recursively move to the next action
     });
-  }
+  };
 
   playTurn = () => {
     this.orderedOrganisms.sort(function (organismOne, organismTwo) {
@@ -128,9 +128,13 @@ export class Board {
   };
 
   runGame() {
-    this.playTurn().then(() => {
-      return this.runGame();
-    });
+    this.playTurn()
+      .then(() => {
+        return new Promise((resolve) => setTimeout(resolve, 1000));
+      })
+      .then(() => {
+        return this.runGame();
+      });
   }
 
   moveOrganism(currentTile, newTile) {

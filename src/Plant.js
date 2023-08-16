@@ -26,7 +26,7 @@ export class Plant extends Organism {
       if (Math.random() <= this.chanceToSpread) {
         this.spread();
       }
-      resolve();
-    })
+      return resolve();
+    });
   }
 }
