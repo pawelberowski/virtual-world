@@ -7,7 +7,8 @@ import { SowThistle } from './SowThistle';
 import { Grass } from './Grass';
 import { PoisonBerry } from './PoisonBerry';
 import { Guarana } from './Guarana';
-import {Player} from "./Player";
+import { Player } from './Player';
+import { Antelope } from './Antelope';
 
 const board = new Board();
 board.generateBoard();
@@ -20,13 +21,14 @@ board.addOrganism(19, 19, Guarana);
 
 board.addOrganism(10, 10, Player);
 // board.addOrganism(0, 19, Fox);
-// board.addOrganism(11, 10, Sheep);
+board.addOrganism(11, 10, Sheep);
 // board.addOrganism(10, 11, Sheep);
 // board.addOrganism(9, 11, Sheep);
-// // board.addOrganism(0, 10, Fox);
-// board.addOrganism(1, 10, Fox);
-// board.addOrganism(0, 8, Antelope);
-// board.addOrganism(0, 6, Turtle);
+board.addOrganism(0, 10, Fox);
+board.addOrganism(1, 10, Fox);
+board.addOrganism(0, 8, Antelope);
+// board.addOrganism(0, 6, Wolf);
+board.addOrganism(1, 6, Wolf);
 // board.addOrganism(0, 4, Player);
 
 board.runGame();
