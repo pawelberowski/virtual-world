@@ -1,4 +1,6 @@
 import { Organism } from './Organism';
+import { Guarana } from './Guarana';
+import { PoisonBerry } from './PoisonBerry';
 
 export class Animal extends Organism {
   constructor(tile, board) {
@@ -7,14 +9,25 @@ export class Animal extends Organism {
 
   fight(newTile) {
     console.log(this, 'Attacked!', newTile.organism);
-    console.log(this.board.orderedOrganisms);
     if (this.strength > newTile.organism.strength) {
       this.board.orderedOrganisms.splice(
         this.board.orderedOrganisms.indexOf(newTile.organism),
         1,
       );
+      if (newTile.organism instanceof Guarana) {
+        this.tile.organism.strength += 3;
+      }
+      if (newTile.organism instanceof PoisonBerry) {
+        this.board.orderedOrganisms.splice(
+          this.board.orderedOrganisms.indexOf(this),
+          1,
+        );
+        newTile.removeOrganism();
+        this.tile.removeOrganism();
+        delete this;
+        return;
+      }
       newTile.removeOrganism();
-      console.log(this.board.orderedOrganisms);
       this.board.moveOrganism(this.tile, newTile);
       return;
     }
@@ -25,7 +38,6 @@ export class Animal extends Organism {
       );
       this.tile.removeOrganism();
       delete this;
-      console.log(this.board.orderedOrganisms);
     }
   }
 

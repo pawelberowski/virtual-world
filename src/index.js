@@ -20,8 +20,9 @@ board.addOrganism(19, 0, PoisonBerry);
 board.addOrganism(19, 19, Guarana);
 
 board.addOrganism(10, 10, Player);
+board.addOrganism(10, 11, Guarana);
 // board.addOrganism(0, 19, Fox);
-board.addOrganism(11, 10, Sheep);
+board.addOrganism(11, 10, Guarana);
 // board.addOrganism(10, 11, Sheep);
 // board.addOrganism(9, 11, Sheep);
 board.addOrganism(0, 10, Fox);
