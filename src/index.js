@@ -26,10 +26,13 @@ board.addOrganism(11, 10, Guarana);
 // board.addOrganism(10, 11, Sheep);
 // board.addOrganism(9, 11, Sheep);
 board.addOrganism(0, 10, Fox);
-board.addOrganism(1, 10, Fox);
-board.addOrganism(0, 8, Antelope);
+board.addOrganism(1, 10, Wolf);
+board.addOrganism(1, 11, Wolf);
+board.addOrganism(0, 9, Wolf);
+board.addOrganism(0, 11, Wolf);
+board.addOrganism(1, 9, Wolf);
 // board.addOrganism(0, 6, Wolf);
-board.addOrganism(1, 6, Wolf);
+// board.addOrganism(1, 6, Wolf);
 // board.addOrganism(0, 4, Player);
 
 board.runGame();

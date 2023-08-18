@@ -69,6 +69,9 @@ export class Animal extends Organism {
   action() {
     return new Promise((resolve) => {
       const newTile = this.findTileToMove();
+      if (!newTile) {
+        return resolve();
+      }
       if (newTile.organism !== null) {
         if (newTile.organism.cssClass === this.cssClass) {
           this.mate();
