@@ -5,4 +5,8 @@ export class PoisonBerry extends Plant {
     super(tile, board);
     this.cssClass = 'poison-berry';
   }
+
+  getEaten(eatingOrganism) {
+    this.board.removeOrganism(eatingOrganism);
+  }
 }

@@ -108,6 +108,11 @@ export class Board {
     this.orderedOrganisms.push(organism);
   }
 
+  removeOrganism(organism) {
+    this.orderedOrganisms.splice(this.orderedOrganisms.indexOf(organism), 1);
+    organism.tile.removeOrganism();
+  }
+
   runActions = (currentIndex = 0) => {
     if (currentIndex >= this.orderedOrganisms.length) {
       return Promise.resolve(); // Base case: All actions completed

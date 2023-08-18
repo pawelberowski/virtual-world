@@ -21,6 +21,8 @@ export class Plant extends Organism {
     );
   }
 
+  getEaten() {}
+
   action() {
     return new Promise((resolve) => {
       if (Math.random() <= this.chanceToSpread) {

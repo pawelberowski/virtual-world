@@ -5,4 +5,8 @@ export class Guarana extends Plant {
     super(tile, board);
     this.cssClass = 'guarana';
   }
+
+  getEaten(eatingOrganism) {
+    eatingOrganism.strength += 3;
+  }
 }
