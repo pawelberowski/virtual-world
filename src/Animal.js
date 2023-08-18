@@ -24,7 +24,6 @@ export class Animal extends Organism {
         );
         newTile.removeOrganism();
         this.tile.removeOrganism();
-        delete this;
         return;
       }
       newTile.removeOrganism();
@@ -37,7 +36,6 @@ export class Animal extends Organism {
         1,
       );
       this.tile.removeOrganism();
-      delete this;
     }
   }
 

@@ -91,15 +91,6 @@ export class Board {
     }, []);
   }
 
-  getTilesForFox(currentTile) {
-    return this.getTilesAround(currentTile).filter((newTile) => {
-      return (
-        newTile.organism === null ||
-        newTile.organism.strength <= currentTile.organism.strength
-      );
-    });
-  }
-
   getEmptyTilesAround(tile) {
     return this.getTilesAround(tile).filter((tile) => {
       return tile.organism === null;

@@ -8,8 +8,17 @@ export class Fox extends Animal {
     this.cssClass = 'fox';
   }
 
+  getTilesForFox(currentTile) {
+    return this.board.getTilesAround(currentTile).filter((newTile) => {
+      return (
+        newTile.organism === null ||
+        newTile.organism.strength <= currentTile.organism.strength
+      );
+    });
+  }
+
   findTileToMove() {
-    const newTiles = this.board.getTilesForFox(this.tile);
+    const newTiles = this.getTilesForFox(this.tile);
     if (!newTiles.length) {
       return;
     }
