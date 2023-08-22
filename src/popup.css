@@ -1,0 +1,16 @@
+.add-organism-popup {
+  width: 800px;
+  height: 600px;
+  background-color: lightgray;
+  position: fixed;
+}
+
+button {
+  width: 375px;
+  height: 125px;
+  background-color: white;
+}
+
+.hidden {
+  display: none;
+}

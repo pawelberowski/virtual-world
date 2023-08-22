@@ -5,10 +5,12 @@ export class Tile {
     this.organism = null;
     this.xCoordinate = xCoordinate;
     this.yCoordinate = yCoordinate;
+    this.tileDiv.id = `${this.xCoordinate},${this.yCoordinate}`;
   }
 
   setOrganism(organism) {
     this.organism = organism;
+    console.log('set', organism);
     this.tileDiv.classList.add(this.organism.cssClass);
   }
 

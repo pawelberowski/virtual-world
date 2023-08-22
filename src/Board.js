@@ -1,4 +1,5 @@
 import { Tile } from './Tile';
+import { AddOrganismPopup } from './AddOrganismPopup';
 
 export class Board {
   constructor() {
@@ -18,6 +19,13 @@ export class Board {
         board.append(tile.tileDiv);
       }
     }
+    const addOrganismPopup = new AddOrganismPopup(this);
+    board.addEventListener('click', function (event) {
+      if (event.target.className === 'tile') {
+        console.log(event.target);
+        addOrganismPopup.generatePopup(event.target);
+      }
+    });
   }
 
   getRandomDirection() {
