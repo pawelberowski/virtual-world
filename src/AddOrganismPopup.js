@@ -1,11 +1,29 @@
 import { Sheep } from './Sheep';
+import { Wolf } from './Wolf';
+import { Fox } from './Fox';
+import { Antelope } from './Antelope';
+import { Turtle } from './Turtle';
+import { Grass } from './Grass';
+import { Guarana } from './Guarana';
+import { PoisonBerry } from './PoisonBerry';
+import { SowThistle } from './SowThistle';
 
 export class AddOrganismPopup {
   constructor(board) {
     this.board = board;
     this.container = document.querySelector('.add-organism-popup');
     this.targetTileDiv = null;
-    this.targetOrganism = null;
+    this.organismsObject = {
+      sheep: Sheep,
+      wolf: Wolf,
+      fox: Fox,
+      antelope: Antelope,
+      turtle: Turtle,
+      grass: Grass,
+      guarana: Guarana,
+      'poison-berry': PoisonBerry,
+      'sow-thistle': SowThistle,
+    };
   }
 
   display() {
@@ -26,8 +44,10 @@ export class AddOrganismPopup {
         if (!isButton) {
           return;
         }
-        thisPopup.targetOrganism = event.target.innerText;
-        thisPopup.addOrganismToBoard();
+        const organismConstructor = thisPopup.getOrganismConstructor(
+          event.target.id,
+        );
+        thisPopup.addOrganismToBoard(organismConstructor);
         thisPopup.hide();
       },
       { once: true },
@@ -38,20 +58,14 @@ export class AddOrganismPopup {
     this.targetTileDiv = targetDiv;
   }
 
-  getOrganismConstructor() {
-    if (this.targetOrganism === 'Sheep') {
-      return Sheep;
-    }
+  getOrganismConstructor(organismName) {
+    return this.organismsObject[organismName];
   }
 
-  addOrganismToBoard() {
+  addOrganismToBoard(organismConstructor) {
     const xCoordinate = this.targetTileDiv.id.split(',')[0];
     const yCoordinate = this.targetTileDiv.id.split(',')[1];
-    this.board.addOrganism(
-      xCoordinate,
-      yCoordinate,
-      this.getOrganismConstructor(),
-    );
+    this.board.addOrganism(xCoordinate, yCoordinate, organismConstructor);
   }
 
   generatePopup(targetDiv) {
