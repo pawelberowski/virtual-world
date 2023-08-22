@@ -40,15 +40,21 @@ export class AddOrganismPopup {
       'click',
       function (event) {
         console.log(event.target);
-        const isButton = event.target.nodeName === 'BUTTON';
-        if (!isButton) {
+        if (event.target.id === 'cancel-button') {
+          thisPopup.hide();
           return;
         }
-        const organismConstructor = thisPopup.getOrganismConstructor(
-          event.target.id,
-        );
-        thisPopup.addOrganismToBoard(organismConstructor);
-        thisPopup.hide();
+        const isButton = event.target.nodeName === 'BUTTON';
+        if (!isButton) {
+          return thisPopup.addListeners();
+        }
+        if (isButton) {
+          const organismConstructor = thisPopup.getOrganismConstructor(
+            event.target.id,
+          );
+          thisPopup.addOrganismToBoard(organismConstructor);
+          thisPopup.hide();
+        }
       },
       { once: true },
     );

@@ -7,8 +7,25 @@
 
 button {
   width: 375px;
-  height: 125px;
+  height: 100px;
+  margin-top: 10px;
+  margin-left: 15px;
   background-color: white;
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#cancel-button {
+  margin: 0;
+  font-size: large;
+  font-weight: bold;
+  background-color: red;
+  width: 30px;
+  height: 30px;
 }
 
 .hidden {
