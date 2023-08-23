@@ -11,11 +11,22 @@ button {
   margin-top: 10px;
   margin-left: 15px;
   background-color: white;
+  border-radius: 5px;
+  background-repeat: no-repeat;
+  background-position: 15px;
 }
 
 .popup-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.organisms-buttons-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-self: center;
   align-items: center;
 }
 
@@ -26,6 +37,46 @@ button {
   background-color: red;
   width: 30px;
   height: 30px;
+}
+
+.organism-name {
+  font-size: large;
+}
+
+#wolf {
+  background-image: url('images/wolf.png');
+}
+
+#sheep {
+  background-image: url('images/sheep.png');
+}
+
+#fox {
+  background-image: url('images/fox.png');
+}
+
+#antelope {
+  background-image: url('images/antelope.png');
+}
+
+#turtle {
+  background-image: url('images/turtle.png');
+}
+
+#grass {
+  background-image: url('images/grass.png');
+}
+
+#guarana {
+  background-image: url('images/guarana.png');
+}
+
+#poison-berry {
+  background-image: url('images/poison_berries.png');
+}
+
+#sow-thistle {
+  background-image: url('images/sow_thistle.png');
 }
 
 .hidden {
