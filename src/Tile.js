@@ -10,7 +10,6 @@ export class Tile {
 
   setOrganism(organism) {
     this.organism = organism;
-    console.log('set', organism);
     this.tileDiv.classList.add(this.organism.cssClass);
   }
 

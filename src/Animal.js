@@ -13,6 +13,10 @@ export class Animal extends Organism {
       return;
     }
     if (this.strength > organismToFightWith.strength) {
+      if (this.strength < 5 && organismToFightWith.cssClass === 'turtle') {
+        console.log('turtle defended itself');
+        return;
+      }
       this.board.removeOrganism(organismToFightWith);
       if (organismToFightWith instanceof Plant) {
         organismToFightWith.getEaten(this);

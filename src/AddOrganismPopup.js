@@ -39,7 +39,6 @@ export class AddOrganismPopup {
     thisPopup.container.addEventListener(
       'click',
       function (event) {
-        console.log(event.target);
         if (event.target.id === 'cancel-button') {
           thisPopup.hide();
           return;
