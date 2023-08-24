@@ -44,23 +44,17 @@ export class AddOrganismPopup {
           thisPopup.hide();
           return;
         }
-        const isButton = event.target.nodeName === 'BUTTON';
-        if (!isButton) {
-          return thisPopup.addListeners();
-        }
-        if (isButton) {
-          const organismConstructor = thisPopup.getOrganismConstructor(
-            event.target.id,
-          );
-          thisPopup.addOrganismToBoard(organismConstructor);
-          thisPopup.hide();
-        }
+        const organismConstructor = thisPopup.getOrganismConstructor(
+          event.target.closest('button').id,
+        );
+        thisPopup.addOrganismToBoard(organismConstructor);
+        thisPopup.hide();
       },
       { once: true },
     );
   }
 
-  getTargetTileDiv(targetDiv) {
+  setTargetTileDiv(targetDiv) {
     this.targetTileDiv = targetDiv;
   }
 
@@ -75,7 +69,7 @@ export class AddOrganismPopup {
   }
 
   generatePopup(targetDiv) {
-    this.getTargetTileDiv(targetDiv);
+    this.setTargetTileDiv(targetDiv);
     this.addListeners();
     this.display();
   }

@@ -7,51 +7,94 @@
   <body>
     <div class="add-organism-popup hidden">
       <div class="popup-header">
-        <h2>Choose organism to create</h2>
+        <p>Choose organism to create</p>
         <button class="cancel-button" id="cancel-button">X</button>
       </div>
       <div class="organisms-buttons-wrapper">
         <button class="add-organism-button" id="wolf">
-          <div><img src="images/wolf.png" alt="Wolf"></div>
-          <div>
-            <b class="organism-name">Wolf</b> <br />
+          <div class="organism-icon">
+            <img src="images/wolf.png" alt="Wolf" />
+          </div>
+          <div class="organism-info">
+            <b class="organism-name">Wolf</b>
             Strength: 9, Initiative: 5
           </div>
         </button>
         <button class="add-organism-button" id="sheep">
-          <b class="organism-name">Sheep</b> <br />
-          Strength: 3, Initiative: 4
+          <div class="organism-icon">
+            <img src="images/sheep.png" alt="Sheep" />
+          </div>
+          <div class="organism-info">
+            <b class="organism-name">Sheep</b>
+            Strength: 3, Initiative: 4
+          </div>
         </button>
         <button class="add-organism-button" id="fox">
-          <b class="organism-name">Fox</b> <br />
-          Strength: 4, Initiative: 7 <br />
-          Never tries to move to a field that is <br />
-          occupied by a stronger organism
+          <div class="organism-icon">
+            <img src="images/fox.png" alt="Fox" />
+          </div>
+          <div class="organism-info">
+            <b class="organism-name">Fox</b>
+            Strength: 4, Initiative: 7 <br />
+            Never tries to move to a field that is occupied by a stronger
+            organism
+          </div>
         </button>
         <button class="add-organism-button" id="antelope">
-          <b class="organism-name">Antelope</b> <br />
-          Strength: 4, Initiative: 4 <br />
-          Has double range of movement and <br />
-          50% chance of fleeing from a fight
+          <div class="organism-icon">
+            <img src="images/antelope.png" alt="Antelope" />
+          </div>
+          <div class="organism-info">
+            <b class="organism-name">Antelope</b>
+            Strength: 4, Initiative: 4 <br />
+            Has double range of movement and 50% chance of fleeing from a fight
+          </div>
         </button>
         <button class="add-organism-button" id="turtle">
-          <b class="organism-name">Turtle</b> <br />
-          Strength: 2, Initiative: 1 <br />
-          Won't change its field in 75% of times.<br /> Defends
-          itself from attacks of organisms with strength lower than 5
+          <div class="organism-icon">
+            <img src="images/turtle.png" alt="Turtle" />
+          </div>
+          <div class="organism-info">
+            <b class="organism-name">Turtle</b>
+            Strength: 2, Initiative: 1 <br />
+            Won't change its field in 75% of times. Defends itself from attacks
+            of organisms with strength lower than 5
+          </div>
         </button>
-        <button class="add-organism-button" id="grass"><b class="organism-name">Grass</b></button>
+        <button class="add-organism-button" id="grass">
+          <div class="organism-icon">
+            <img src="images/grass.png" alt="Grass" />
+          </div>
+          <div class="organism-info">
+            <b class="organism-name">Grass</b>
+          </div>
+        </button>
         <button class="add-organism-button" id="guarana">
-          <b class="organism-name">Guarana</b> <br />Eating it boosts strength
-          by 3 points
+          <div class="organism-icon">
+            <img src="images/guarana.png" alt="Guarana" />
+          </div>
+          <div class="organism-info">
+            <b class="organism-name">Guarana</b>
+            Eating it boosts strength by 3 points
+          </div>
         </button>
         <button class="add-organism-button" id="poison-berry">
-          <b class="organism-name">Poison Berry</b> <br />Kills everything that
-          dares to eat it
+          <div class="organism-icon">
+            <img src="images/poison_berries.png" alt="Poison Berries" />
+          </div>
+          <div class="organism-info">
+            <b class="organism-name">Poison Berry</b>
+            Kills everything that dares to eat it
+          </div>
         </button>
         <button class="add-organism-button" id="sow-thistle">
-          <b class="organism-name">Sow Thistle</b> <br />Has three times as much
-          chance of spreading <br />than other plants
+          <div class="organism-icon">
+            <img src="images/sow_thistle.png" alt="Sow Thistle" />
+          </div>
+          <div class="organism-info">
+            <b class="organism-name">Sow Thistle</b>
+            Has three times as much chance of spreading than other plants
+          </div>
         </button>
       </div>
     </div>

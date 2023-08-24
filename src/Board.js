@@ -1,5 +1,15 @@
 import { Tile } from './Tile';
 import { AddOrganismPopup } from './AddOrganismPopup';
+import { Player } from './Player';
+import { Sheep } from './Sheep';
+import { Wolf } from './Wolf';
+import { Fox } from './Fox';
+import { Antelope } from './Antelope';
+import { Turtle } from './Turtle';
+import { Grass } from './Grass';
+import { Guarana } from './Guarana';
+import { PoisonBerry } from './PoisonBerry';
+import { SowThistle } from './SowThistle';
 
 export class Board {
   constructor() {
@@ -7,6 +17,18 @@ export class Board {
     this.width = 20;
     this.tileArray = [];
     this.orderedOrganisms = [];
+    this.initialPopulationPercentage = 15;
+    this.organismTypes = [
+      Sheep,
+      Wolf,
+      Fox,
+      Antelope,
+      Turtle,
+      Grass,
+      Guarana,
+      PoisonBerry,
+      SowThistle,
+    ];
   }
 
   generateBoard() {
@@ -26,6 +48,25 @@ export class Board {
         addOrganismPopup.generatePopup(event.target);
       }
     });
+  }
+
+  getPopulationNumber() {
+    const tilesNumber = this.heigth * this.width;
+    const organismsNumber = Math.floor(
+      (tilesNumber * this.initialPopulationPercentage) / 100,
+    );
+    if (organismsNumber === tilesNumber) {
+      // Leaving room for the player
+      return organismsNumber - 1;
+    }
+    return organismsNumber;
+  }
+
+  populateBoard() {
+    const populationNumber = this.getPopulationNumber();
+    const organismsToCreate = [Player];
+    //create a clone array of tiles and remove a randomly selected one when picking
+    //iterate over array of organisms
   }
 
   getRandomDirection() {

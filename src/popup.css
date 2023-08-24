@@ -1,8 +1,32 @@
 .add-organism-popup {
   width: 800px;
   height: 600px;
-  background-color: lightgray;
+  background-color: lightblue;
   position: fixed;
+  border-radius: 10px;
+}
+
+.popup-header {
+  font-family: 'Arial Black', serif;
+  padding: 10px 10px 0 10px;
+  font-size: larger;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cancel-button {
+  font-size: large;
+  font-weight: bold;
+  background-color: lightgoldenrodyellow;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+}
+
+.organisms-buttons-wrapper {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .add-organism-button {
@@ -11,68 +35,25 @@
   margin-top: 10px;
   margin-left: 15px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  background-color: white;
+  border-radius: 10px;
 }
 
-.popup-header {
+.organism-icon {
+  padding-left: 10px;
+}
+
+.organism-info {
+  padding-left: 10px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 10px;
-}
-
-.organisms-buttons-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-self: center;
-  align-items: center;
-}
-
-.cancel-button {
-  margin: 0;
-  font-size: large;
-  font-weight: bold;
-  background-color: red;
-  width: 30px;
-  height: 30px;
+  flex-direction: column;
+  width: 300px;
 }
 
 .organism-name {
   font-size: large;
-}
-
-
-#sheep {
-  background-image: url('images/sheep.png');
-}
-
-#fox {
-  background-image: url('images/fox.png');
-}
-
-#antelope {
-  background-image: url('images/antelope.png');
-}
-
-#turtle {
-  background-image: url('images/turtle.png');
-}
-
-#grass {
-  background-image: url('images/grass.png');
-}
-
-#guarana {
-  background-image: url('images/guarana.png');
-}
-
-#poison-berry {
-  background-image: url('images/poison_berries.png');
-}
-
-#sow-thistle {
-  background-image: url('images/sow_thistle.png');
 }
 
 .hidden {
