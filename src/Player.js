@@ -11,33 +11,27 @@ export class Player extends Animal {
   getDirection() {
     return new Promise((resolve) => {
       document.addEventListener('keypress', (event) => {
-        if (event.code === 'Numpad1' || event.code === 'KeyZ') {
-          resolve('sw');
-        }
-        if (event.code === 'Numpad2' || event.code === 'KeyX') {
-          resolve('s');
-        }
-        if (event.code === 'Numpad3' || event.code === 'KeyC') {
-          resolve('se');
-        }
-        if (event.code === 'Numpad4' || event.code === 'KeyA') {
-          resolve('w');
-        }
-        if (event.code === 'Numpad5' || event.code === 'KeyS') {
-          resolve('skipTurn');
-        }
-        if (event.code === 'Numpad6' || event.code === 'KeyD') {
-          resolve('e');
-        }
-        if (event.code === 'Numpad7' || event.code === 'KeyQ') {
-          resolve('nw');
-        }
-        if (event.code === 'Numpad8' || event.code === 'KeyW') {
-          resolve('n');
-        }
-        if (event.code === 'Numpad9' || event.code === 'KeyE') {
-          resolve('ne');
-        }
+        const movementCodes = {
+          Numpad1: 'sw',
+          KeyZ: 'sw',
+          Numpad2: 's',
+          KeyX: 's',
+          Numpad3: 'se',
+          KeyC: 'se',
+          Numpad4: 'w',
+          KeyA: 'w',
+          Numpad5: 'skipTurn',
+          KeyS: 'skipTurn',
+          Numpad6: 'e',
+          KeyD: 'e',
+          Numpad7: 'nw',
+          KeyQ: 'nw',
+          Numpad8: 'n',
+          KeyW: 'n',
+          Numpad9: 'ne',
+          KeyE: 'ne',
+        };
+        resolve(movementCodes[event.code]);
       });
     });
   }
