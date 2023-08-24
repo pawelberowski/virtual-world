@@ -44,6 +44,10 @@ export class AddOrganismPopup {
           thisPopup.hide();
           return;
         }
+        const closestButton = event.target.closest('button');
+        if (!closestButton) {
+          return thisPopup.addListeners();
+        }
         const organismConstructor = thisPopup.getOrganismConstructor(
           event.target.closest('button').id,
         );
