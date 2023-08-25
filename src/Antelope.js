@@ -7,4 +7,26 @@ export class Antelope extends Animal {
     this.initiative = 4;
     this.cssClass = 'antelope';
   }
+
+  getTilesForAntelope(currentTile) {
+    const tilesAround = this.board.getTilesAround(currentTile);
+    const tilesForAntelope = [];
+    tilesAround.forEach((tile) => {
+      const tilesAround = this.board.getTilesAround(tile);
+      tilesAround.forEach((tile) => {
+        if (!tilesForAntelope.includes(tile)) {
+          tilesForAntelope.push(tile);
+        }
+      });
+    });
+    return tilesForAntelope;
+  }
+
+  findTileToMove() {
+    const newTiles = this.getTilesForAntelope(this.tile);
+    if (!newTiles.length) {
+      return;
+    }
+    return this.board.getRandomTile(newTiles);
+  }
 }
