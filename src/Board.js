@@ -17,7 +17,7 @@ export class Board {
     this.width = 20;
     this.tileArray = [];
     this.orderedOrganisms = [];
-    this.initialPopulationPercentage = 15;
+    this.initialPopulationPercentage = 10;
     this.organismTypes = [
       Sheep,
       Wolf,
@@ -62,9 +62,43 @@ export class Board {
     return organismsNumber;
   }
 
+  getRandomOrganismType() {
+    return this.organismTypes[
+      Math.floor(Math.random() * this.organismTypes.length)
+    ];
+  }
+
+  getRandomTileFromMatrix(tileArray) {
+    const randomRow = Math.floor(Math.random() * tileArray.length);
+    const randomColumn = Math.floor(
+      Math.random() * tileArray[randomRow].length,
+    );
+    if (this.tileArray[randomRow][randomColumn].organism) {
+      console.log('tile occupied');
+      return this.getRandomTileFromMatrix(tileArray);
+    }
+    return tileArray[randomRow][randomColumn];
+  }
+
   populateBoard() {
     const populationNumber = this.getPopulationNumber();
+    let tileArrayCopy = [...this.tileArray];
     const organismsToCreate = [Player];
+    for (let i = 0; i < populationNumber; i++) {
+      const organismType = this.getRandomOrganismType();
+      organismsToCreate.push(organismType);
+    }
+    organismsToCreate.forEach((organismType) => {
+      const randomTile = this.getRandomTileFromMatrix(tileArrayCopy);
+      this.addOrganism(
+        randomTile.xCoordinate,
+        randomTile.yCoordinate,
+        organismType,
+      );
+      // const indexToRemove = tileArrayCopy[randomTile.xCoordinate].indexOf(randomTile);
+      // tileArrayCopy[randomTile.xCoordinate].splice(indexToRemove, 1);
+      // console.log(tileArrayCopy);
+    });
     //create a clone array of tiles and remove a randomly selected one when picking
     //iterate over array of organisms
   }

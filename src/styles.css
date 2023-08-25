@@ -33,6 +33,10 @@ body {
   align-items: center;
 }
 
+.player {
+  background-color: greenyellow;
+}
+
 .wolf {
   background-image: url('images/wolf.png');
 }
