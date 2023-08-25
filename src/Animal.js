@@ -12,6 +12,19 @@ export class Animal extends Organism {
     if (!organismToFightWith) {
       return;
     }
+    if (organismToFightWith.cssClass === 'antelope' && Math.random() < 0.5) {
+      const tilesToFlee = organismToFightWith.getEmptyTilesForAntelope(newTile);
+      const tileToFlee = this.board.getRandomTile(tilesToFlee);
+      if (!tileToFlee) {
+        this.board.removeOrganism(organismToFightWith);
+        console.log('Antelope had nowhere to go');
+      } else {
+        this.board.moveOrganism(newTile, tileToFlee);
+        console.log('Antelope fled from the fight');
+      }
+      this.board.moveOrganism(this.tile, newTile);
+      return;
+    }
     if (this.strength > organismToFightWith.strength) {
       if (this.strength < 5 && organismToFightWith.cssClass === 'turtle') {
         console.log('turtle defended itself');

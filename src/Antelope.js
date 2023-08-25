@@ -22,6 +22,12 @@ export class Antelope extends Animal {
     return tilesForAntelope;
   }
 
+  getEmptyTilesForAntelope(tile) {
+    return this.getTilesForAntelope(tile).filter((tile) => {
+      return tile.organism === null;
+    });
+  }
+
   findTileToMove() {
     const newTiles = this.getTilesForAntelope(this.tile);
     if (!newTiles.length) {
