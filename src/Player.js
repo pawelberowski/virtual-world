@@ -39,11 +39,12 @@ export class Player extends Animal {
   action() {
     return new Promise((resolve) => {
       this.getDirection().then((direction) => {
-        if (direction === 'skipTurn') {
+        const newTile = this.board.probeForNewTile(direction, this.tile);
+        if (direction === 'skipTurn' || !newTile) {
           return resolve();
         }
-        const newTile = this.board.probeForNewTile(direction, this.tile);
-        if (newTile.organism !== null) {
+
+        if (newTile.organism) {
           this.fight(newTile);
           return resolve();
         }
