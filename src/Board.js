@@ -17,7 +17,7 @@ export class Board {
     this.width = 20;
     this.tileArray = [];
     this.orderedOrganisms = [];
-    this.initialPopulationPercentage = 10;
+    this.initialPopulationPercentage = 15;
     this.organismTypes = [
       Sheep,
       Wolf,
@@ -68,39 +68,39 @@ export class Board {
     ];
   }
 
-  getRandomTileFromMatrix(tileArray) {
-    const randomRow = Math.floor(Math.random() * tileArray.length);
-    const randomColumn = Math.floor(
-      Math.random() * tileArray[randomRow].length,
-    );
-    if (this.tileArray[randomRow][randomColumn].organism) {
-      console.log('tile occupied');
-      return this.getRandomTileFromMatrix(tileArray);
-    }
-    return tileArray[randomRow][randomColumn];
+  getRandomizedTiles() {
+    const flattenedTiles = this.tileArray.flat();
+    return flattenedTiles
+      .map(function (tile) {
+        return {
+          tile,
+          randomNumber: Math.random(),
+        };
+      })
+      .sort(function (firstElement, secondElement) {
+        return firstElement.randomNumber - secondElement.randomNumber;
+      })
+      .map(function ({ tile }) {
+        return tile;
+      });
   }
 
   populateBoard() {
     const populationNumber = this.getPopulationNumber();
-    let tileArrayCopy = [...this.tileArray];
+    const shuffledTiles = this.getRandomizedTiles();
     const organismsToCreate = [Player];
     for (let i = 0; i < populationNumber; i++) {
       const organismType = this.getRandomOrganismType();
       organismsToCreate.push(organismType);
     }
     organismsToCreate.forEach((organismType) => {
-      const randomTile = this.getRandomTileFromMatrix(tileArrayCopy);
+      const randomTile = shuffledTiles.pop();
       this.addOrganism(
         randomTile.xCoordinate,
         randomTile.yCoordinate,
         organismType,
       );
-      // const indexToRemove = tileArrayCopy[randomTile.xCoordinate].indexOf(randomTile);
-      // tileArrayCopy[randomTile.xCoordinate].splice(indexToRemove, 1);
-      // console.log(tileArrayCopy);
     });
-    //create a clone array of tiles and remove a randomly selected one when picking
-    //iterate over array of organisms
   }
 
   getRandomDirection() {
