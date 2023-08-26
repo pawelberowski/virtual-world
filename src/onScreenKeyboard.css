@@ -1,0 +1,56 @@
+.on-screen-keyboard-wrapper {
+  margin-left: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  height: 302px;
+  width: 302px;
+}
+
+.move-btn {
+  height: 100px;
+  width: 100px;
+}
+
+#nw img {
+  transform: rotate(90deg) scale(75%);
+}
+
+#n img {
+  transform: rotate(135deg) scale(75%);
+}
+
+#ne img {
+  transform: rotate(180deg) scale(75%);
+}
+
+#w img {
+  transform: rotate(45deg) scale(75%);
+}
+
+#e img {
+  transform: rotate(225deg) scale(75%);
+}
+
+#se img {
+  transform: rotate(270deg) scale(75%);
+}
+
+#s img {
+  transform: rotate(315deg) scale(75%);
+}
+
+#sw img {
+  transform: scale(75%);
+}
+
+#skip-turn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 1125px) {
+  .on-screen-keyboard-wrapper {
+    margin-top: 20px;
+  }
+}

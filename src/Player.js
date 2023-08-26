@@ -43,7 +43,6 @@ export class Player extends Animal {
         if (direction === 'skipTurn' || !newTile) {
           return resolve();
         }
-
         if (newTile.organism) {
           this.fight(newTile);
           return resolve();

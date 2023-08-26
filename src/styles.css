@@ -12,11 +12,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .board-container {
+  margin-top: 20px;
   width: 802px;
   height: 802px;
   display: flex;
@@ -75,4 +75,10 @@ body {
 
 .guarana {
   background-image: url('images/guarana.png');
+}
+
+@media (max-width: 1125px) {
+  body {
+    flex-direction: column;
+  }
 }
