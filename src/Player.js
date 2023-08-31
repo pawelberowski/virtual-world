@@ -6,6 +6,7 @@ export class Player extends Animal {
     this.strength = 5;
     this.initiative = 4;
     this.cssClass = 'player';
+    this.onScreen = document.querySelector('.on-screen-keyboard-wrapper');
   }
 
   getDirection() {
@@ -32,6 +33,11 @@ export class Player extends Animal {
           KeyE: 'ne',
         };
         resolve(movementCodes[event.code]);
+      });
+      this.onScreen.addEventListener('click', function (event) {
+        if (event.target.tagName === 'IMG') {
+          return resolve(event.target.parentElement.id);
+        }
       });
     });
   }
