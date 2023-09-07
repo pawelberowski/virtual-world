@@ -198,7 +198,7 @@ export class Board {
 
   async runActions(currentIndex = 0) {
     if (currentIndex >= this.orderedOrganisms.length) {
-      return Promise.resolve(); // Base case: All actions completed
+      return; // Base case: All actions completed
     }
     const organism = this.orderedOrganisms[currentIndex];
     await organism.action();
