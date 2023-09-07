@@ -196,17 +196,14 @@ export class Board {
     organism.tile.removeOrganism();
   }
 
-  runActions = (currentIndex = 0) => {
+  async runActions(currentIndex = 0) {
     if (currentIndex >= this.orderedOrganisms.length) {
       return Promise.resolve(); // Base case: All actions completed
     }
-
     const organism = this.orderedOrganisms[currentIndex];
-
-    return organism.action().then(() => {
-      return this.runActions(currentIndex + 1); // Recursively move to the next action
-    });
-  };
+    await organism.action();
+    return this.runActions(currentIndex + 1); // Recursively move to the next action
+  }
 
   playTurn = () => {
     this.orderedOrganisms.sort(function (organismOne, organismTwo) {
